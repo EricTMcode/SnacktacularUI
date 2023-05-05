@@ -15,6 +15,7 @@
 		07D605172A0533E3005982B0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 07D605162A0533E3005982B0 /* FirebaseFirestore */; };
 		07D605192A0533E3005982B0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07D605182A0533E3005982B0 /* FirebaseFirestoreSwift */; };
 		07D6051B2A0533E3005982B0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 07D6051A2A0533E3005982B0 /* FirebaseStorage */; };
+		07D6051D2A0535A8005982B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07D6051C2A0535A8005982B0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		07D605042A053238005982B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07D605072A053238005982B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07D6050E2A05327D005982B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07D6051C2A0535A8005982B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		07D604FF2A053237005982B0 /* SnacktacularUI */ = {
 			isa = PBXGroup;
 			children = (
+				07D6050E2A05327D005982B0 /* Info.plist */,
 				07D605122A0532AE005982B0 /* App */,
 				07D605112A05329F005982B0 /* Views */,
 				07D605102A053298005982B0 /* ViewModels */,
@@ -103,7 +106,7 @@
 		07D605122A0532AE005982B0 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				07D6050E2A05327D005982B0 /* Info.plist */,
+				07D6051C2A0535A8005982B0 /* GoogleService-Info.plist */,
 				07D605002A053237005982B0 /* SnacktacularUIApp.swift */,
 			);
 			path = App;
@@ -178,6 +181,7 @@
 			files = (
 				07D605082A053238005982B0 /* Preview Assets.xcassets in Resources */,
 				07D605052A053238005982B0 /* Assets.xcassets in Resources */,
+				07D6051D2A0535A8005982B0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
