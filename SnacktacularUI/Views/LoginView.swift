@@ -9,10 +9,16 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
+    enum Field {
+        case email, password
+    }
+    
     @State private var email = ""
     @State private var password = ""
     @State private var showingAlert = false
     @State private var alertMesssage = ""
+    @State private var buttonDisabled = true
+    @FocusState private var focusField: Field?
     
     var body: some View {
         NavigationStack {
@@ -27,10 +33,24 @@ struct LoginView: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .submitLabel(.next)
+                    .focused($focusField, equals: .email)
+                    .onSubmit {
+                        focusField = .password
+                    }
+                    .onChange(of: email) { _ in
+                        enableButtons()
+                    }
                 
                 SecureField("Password", text: $password)
                     .textInputAutocapitalization(.never)
                     .submitLabel(.done)
+                    .focused($focusField, equals: .password)
+                    .onSubmit {
+                        focusField = nil
+                    }
+                    .onChange(of: password) { _ in
+                        enableButtons()
+                    }
             }
             .textFieldStyle(.roundedBorder)
             .overlay {
@@ -54,6 +74,7 @@ struct LoginView: View {
                 }
                 .padding(.leading)
             }
+            .disabled(buttonDisabled)
             .buttonStyle(.borderedProminent)
             .tint(Color("SnackColor"))
             .font(.title2)
@@ -63,6 +84,12 @@ struct LoginView: View {
         .alert(alertMesssage, isPresented: $showingAlert) {
             Button("OK", role: .cancel) {}
         }
+    }
+    
+    func enableButtons() {
+        let emailIsgood = email.count > 6 && email.contains("@")
+        let passwordIsGood = password.count >= 6
+        buttonDisabled = !(emailIsgood && passwordIsGood)
     }
     
     func register() {
@@ -85,7 +112,7 @@ struct LoginView: View {
                 alertMesssage = "LOGIN ERROR: \(error.localizedDescription)"
                 showingAlert = true
             } else {
-                print("🪵 REGISTRATION SUCCESS!")
+                print("🪵 LOGIN SUCCESS!")
                  // LOAD LIST VIEW
             }
         }
