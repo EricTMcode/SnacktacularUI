@@ -87,7 +87,7 @@ struct LoginView: View {
     }
     
     func enableButtons() {
-        let emailIsgood = email.count > 6 && email.contains("@")
+        let emailIsgood = email.count >= 6 && email.contains("@")
         let passwordIsGood = password.count >= 6
         buttonDisabled = !(emailIsgood && passwordIsGood)
     }

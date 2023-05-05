@@ -16,6 +16,7 @@
 		07D605192A0533E3005982B0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07D605182A0533E3005982B0 /* FirebaseFirestoreSwift */; };
 		07D6051B2A0533E3005982B0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 07D6051A2A0533E3005982B0 /* FirebaseStorage */; };
 		07D6051D2A0535A8005982B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07D6051C2A0535A8005982B0 /* GoogleService-Info.plist */; };
+		07D6051F2A054099005982B0 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6051E2A054099005982B0 /* ListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		07D605072A053238005982B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07D6050E2A05327D005982B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07D6051C2A0535A8005982B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		07D6051E2A054099005982B0 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				07D605022A053237005982B0 /* LoginView.swift */,
+				07D6051E2A054099005982B0 /* ListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			files = (
 				07D605032A053237005982B0 /* LoginView.swift in Sources */,
 				07D605012A053237005982B0 /* SnacktacularUIApp.swift in Sources */,
+				07D6051F2A054099005982B0 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
