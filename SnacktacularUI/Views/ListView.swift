@@ -15,39 +15,42 @@ struct ListView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        List(spots) { spot in
-            NavigationLink {
-                SpotDetailView(spot: spot)
-            } label: {
-                Text(spot.name)
-                    .font(.title2)
+        NavigationStack {
+            List(spots) { spot in
+                NavigationLink {
+                    SpotDetailView(spot: spot)
+                } label: {
+                    Text(spot.name)
+                        .font(.title2)
+                }
             }
-        }
-        .listStyle(.plain)
-        .navigationBarBackButtonHidden()
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Sign Out") {
-                    do {
-                        try Auth.auth().signOut()
-                        print("🪵➡️ Log out successful!")
-                        dismiss()
-                    } catch {
-                        print("😡 ERROR: Could not sign out!")
+            .listStyle(.plain)
+            .navigationTitle("Snack Spots")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Sign Out") {
+                        do {
+                            try Auth.auth().signOut()
+                            print("🪵➡️ Log out successful!")
+                            dismiss()
+                        } catch {
+                            print("😡 ERROR: Could not sign out!")
+                        }
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        sheetIsPresented.toggle()
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    sheetIsPresented.toggle()
-                } label: {
-                    Image(systemName: "plus")
+            .sheet(isPresented: $sheetIsPresented) {
+                NavigationStack {
+                    SpotDetailView(spot: Spot())
                 }
-            }
-        }
-        .sheet(isPresented: $sheetIsPresented) {
-            NavigationStack {
-                SpotDetailView(spot: Spot())
             }
         }
     }
