@@ -86,7 +86,7 @@ struct LoginView: View {
         }
         
         .onAppear {
-            // if logged in when app runs, navigate to the new screen & skip login scree
+            // if logged in when app runs, navigate to the new screen & skip login screen
             if Auth.auth().currentUser != nil {
                 print("🪵 LOGIN SUCCESS!")
                 presentSheet = true
