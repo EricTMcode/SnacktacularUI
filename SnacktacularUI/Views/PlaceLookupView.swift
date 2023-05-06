@@ -13,7 +13,7 @@ struct PlaceLookupView: View {
     @StateObject var placeVM = PlaceViewModel()
     @State private var searchText = ""
     @Environment(\.dismiss) private var dismiss
-    @Binding var returnedPlace: Place
+    @Binding var spot: Spot
     
     var body: some View {
         NavigationStack {
@@ -25,7 +25,10 @@ struct PlaceLookupView: View {
                         .font(.callout)
                 }
                 .onTapGesture {
-                    returnedPlace = place
+                    spot.name = place.name
+                    spot.address = place.address
+                    spot.latitude = place.latitude
+                    spot.longitude = place.longitude
                     dismiss()
                 }
             }
@@ -51,7 +54,7 @@ struct PlaceLookupView: View {
 
 struct PlaceLookupView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceLookupView(returnedPlace: .constant(Place(mapItem: MKMapItem())))
+        PlaceLookupView(spot: .constant(Spot()))
             .environmentObject(LocationManager())
     }
 }
