@@ -88,7 +88,7 @@ struct SpotDetailView: View {
             
             Spacer()
         }
-        .onAppear {
+        .onAppear { // This is to prevent PreviewProvider error
             if !previewRunning {
                 $reviews.path = "spots/\(spot.id ?? "")/reviews"
                 print("reviews.path = \($reviews.path)")

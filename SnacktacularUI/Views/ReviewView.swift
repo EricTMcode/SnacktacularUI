@@ -77,9 +77,13 @@ struct ReviewView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
                     Task {
-                       await reviewVM.saveReview(spot: spot, review: review)
+                      let success = await reviewVM.saveReview(spot: spot, review: review)
+                        if success {
+                            dismiss()
+                        } else {
+                            print("😡 ERROR saving data in ReviewView")
+                        }
                     }
-                    dismiss()
                 }
             }
         }
