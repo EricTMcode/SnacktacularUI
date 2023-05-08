@@ -32,11 +32,11 @@ struct ReviewView: View {
                 .bold()
             
             HStack {
-                ForEach(0...4, id: \.self) { _ in
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.red)
-                        .font(.largeTitle)
-                }
+                StarSelectionView(rating: review.rating)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(.gray.opacity(0.5), lineWidth: 2)
+                    }
             }
             .padding(.bottom)
             

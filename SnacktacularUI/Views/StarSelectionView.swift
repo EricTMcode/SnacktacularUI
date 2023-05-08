@@ -21,6 +21,9 @@ struct StarSelectionView: View {
             ForEach(1...highestRating, id: \.self) { number in
                 showStar(for: number)
                     .foregroundColor(number <= rating ? fillColor : emptyColor)
+                    .onTapGesture {
+                        rating = number
+                    }
             }
             .font(font)
         }
