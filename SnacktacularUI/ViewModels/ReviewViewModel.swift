@@ -14,7 +14,12 @@ class ReviewViewModel: ObservableObject {
     func saveReview(spot: Spot, review: Review) async -> Bool {
         let db = Firestore.firestore()
         
-        let collectionString = "spots/\(spot.id)/reviews"
+        guard let spotID = spot.id else {
+            print("😡 ERROR: spot.id = nil")
+            return false
+        }
+        
+        let collectionString = "spots/\(spotID)/reviews"
         
         if let id = review.id { // review must already exist, so save
             do {

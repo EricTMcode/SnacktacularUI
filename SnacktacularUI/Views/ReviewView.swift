@@ -10,6 +10,7 @@ import SwiftUI
 struct ReviewView: View {
     @State var spot: Spot
     @State var review: Review
+    @StateObject var reviewVM = ReviewViewModel()
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -32,7 +33,7 @@ struct ReviewView: View {
                 .bold()
             
             HStack {
-                StarSelectionView(rating: review.rating)
+                StarSelectionView(rating: $review.rating)
                     .overlay {
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(.gray.opacity(0.5), lineWidth: 2)
@@ -75,6 +76,9 @@ struct ReviewView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
+                    Task {
+                       await reviewVM.saveReview(spot: spot, review: review)
+                    }
                     dismiss()
                 }
             }
