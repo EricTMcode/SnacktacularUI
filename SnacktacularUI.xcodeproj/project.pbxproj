@@ -26,6 +26,7 @@
 		07D6055B2A068CBB005982B0 /* PlaceLookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605572A068CBB005982B0 /* PlaceLookupView.swift */; };
 		07D6055D2A092AD4005982B0 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6055C2A092AD4005982B0 /* Review.swift */; };
 		07D6055F2A092C0C005982B0 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6055E2A092C0C005982B0 /* ReviewView.swift */; };
+		07D605612A092F93005982B0 /* StarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605602A092F93005982B0 /* StarSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		07D605572A068CBB005982B0 /* PlaceLookupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceLookupView.swift; sourceTree = "<group>"; };
 		07D6055C2A092AD4005982B0 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		07D6055E2A092C0C005982B0 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		07D605602A092F93005982B0 /* StarSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				07D605222A059357005982B0 /* SpotDetailView.swift */,
 				07D605572A068CBB005982B0 /* PlaceLookupView.swift */,
 				07D6055E2A092C0C005982B0 /* ReviewView.swift */,
+				07D605602A092F93005982B0 /* StarSelectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				07D6051F2A054099005982B0 /* ListView.swift in Sources */,
 				07D605582A068CBB005982B0 /* Place.swift in Sources */,
 				07D605212A05926D005982B0 /* Spot.swift in Sources */,
+				07D605612A092F93005982B0 /* StarSelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
