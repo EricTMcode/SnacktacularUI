@@ -23,6 +23,7 @@ struct SpotDetailView: View {
     @State var spot: Spot
     @State private var showPlaceLookupSheet = false
     @State private var showReviewViewSheet = false
+    @State private var showSaveAlert = false
     @State private var mapRegion = MKCoordinateRegion()
     @State private var annotations: [Annotation] = []
     @Environment(\.dismiss) private var dismiss
@@ -74,14 +75,18 @@ struct SpotDetailView: View {
                             .foregroundColor(Color("SnackColor"))
                         Spacer()
                         Button("Rate It") {
-                            showReviewViewSheet.toggle()
+                            if spot.id == nil {
+                                showSaveAlert.toggle()
+                            } else {
+                                showReviewViewSheet.toggle()
+                            }
                         }
                         .buttonStyle(.borderedProminent)
                         .bold()
                         .tint(Color("SnackColor"))
                     }
                 }
-
+                
             }
             .headerProminence(.increased)
             .listStyle(.plain)
@@ -89,7 +94,7 @@ struct SpotDetailView: View {
             Spacer()
         }
         .onAppear { // This is to prevent PreviewProvider error
-            if !previewRunning {
+            if !previewRunning && spot.id != nil {
                 $reviews.path = "spots/\(spot.id ?? "")/reviews"
                 print("reviews.path = \($reviews.path)")
             }
@@ -136,7 +141,7 @@ struct SpotDetailView: View {
                         Text("Lookup Place")
                     }
                 }
-
+                
             }
         }
         .sheet(isPresented: $showPlaceLookupSheet) {
@@ -147,6 +152,23 @@ struct SpotDetailView: View {
                 ReviewView(spot: spot, review: Review())
             }
         }
+        .alert("Cannot Rate Place Unless It Is Saved", isPresented: $showSaveAlert) {
+            Button("Cancel", role: .cancel) {}
+            Button("Save", role: .none) {
+                Task {
+                    let success = await spotVM.saveSpot(spot: spot)
+                    spot = spotVM.spot
+                    if success {
+                        showReviewViewSheet.toggle()
+                    } else {
+                        print("😡 Dang! Error saving spot!")
+                    }
+                }
+            }
+        } message: {
+            Text("Would you like to save this alert first so that you can enter a review?")
+        }
+        
     }
 }
 
