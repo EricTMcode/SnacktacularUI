@@ -27,6 +27,7 @@
 		07D6055D2A092AD4005982B0 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6055C2A092AD4005982B0 /* Review.swift */; };
 		07D6055F2A092C0C005982B0 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D6055E2A092C0C005982B0 /* ReviewView.swift */; };
 		07D605612A092F93005982B0 /* StarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605602A092F93005982B0 /* StarSelectionView.swift */; };
+		07D605632A093682005982B0 /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605622A093682005982B0 /* ReviewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		07D6055C2A092AD4005982B0 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		07D6055E2A092C0C005982B0 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		07D605602A092F93005982B0 /* StarSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarSelectionView.swift; sourceTree = "<group>"; };
+		07D605622A093682005982B0 /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				07D605242A0594DD005982B0 /* SpotViewModel.swift */,
+				07D605622A093682005982B0 /* ReviewViewModel.swift */,
 				07D605562A068CBB005982B0 /* PlaceViewModel.swift */,
 				07D605552A068CBB005982B0 /* LocationManager.swift */,
 			);
@@ -227,6 +230,7 @@
 			files = (
 				07D605232A059357005982B0 /* SpotDetailView.swift in Sources */,
 				07D6055A2A068CBB005982B0 /* PlaceViewModel.swift in Sources */,
+				07D605632A093682005982B0 /* ReviewViewModel.swift in Sources */,
 				07D6055B2A068CBB005982B0 /* PlaceLookupView.swift in Sources */,
 				07D605032A053237005982B0 /* LoginView.swift in Sources */,
 				07D6055F2A092C0C005982B0 /* ReviewView.swift in Sources */,

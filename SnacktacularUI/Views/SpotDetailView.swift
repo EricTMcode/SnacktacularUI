@@ -56,7 +56,13 @@ struct SpotDetailView: View {
             
             List {
                 Section {
-                    
+                    ForEach(reviews) { review in
+                        NavigationLink {
+                            ReviewView(spot: spot, review: review)
+                        } label: {
+                            Text(review.title)
+                        }
+                    }
                 } header: {
                     HStack {
                         Text("Avg. Rating:")
