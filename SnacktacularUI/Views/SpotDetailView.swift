@@ -62,7 +62,7 @@ struct SpotDetailView: View {
                         NavigationLink {
                             ReviewView(spot: spot, review: review)
                         } label: {
-                            Text(review.title)
+                            SpotReviewRowView(review: review)
                         }
                     }
                 } header: {
