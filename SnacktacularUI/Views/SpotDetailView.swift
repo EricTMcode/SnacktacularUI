@@ -24,6 +24,7 @@ struct SpotDetailView: View {
     @State private var showPlaceLookupSheet = false
     @State private var showReviewViewSheet = false
     @State private var showSaveAlert = false
+    @State private var showingAsSheet = false
     @State private var mapRegion = MKCoordinateRegion()
     @State private var annotations: [Annotation] = []
     @Environment(\.dismiss) private var dismiss
@@ -93,10 +94,12 @@ struct SpotDetailView: View {
             
             Spacer()
         }
-        .onAppear { // This is to prevent PreviewProvider error
-            if !previewRunning && spot.id != nil {
+        .onAppear {
+            if !previewRunning && spot.id != nil { // This is to prevent PreviewProvider error
                 $reviews.path = "spots/\(spot.id ?? "")/reviews"
                 print("reviews.path = \($reviews.path)")
+            } else {
+                showingAsSheet = true
             }
             
             
@@ -112,36 +115,43 @@ struct SpotDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(spot.id == nil)
         .toolbar {
-            if spot.id == nil { // New spot, so show Cancel/Save buttons
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        Task {
-                            let success = await spotVM.saveSpot(spot: spot)
-                            if success {
-                                dismiss()
-                            } else {
-                                print("😡 DANG! Error saving spot!")
-                            }
+            if showingAsSheet { // New spot, so show Cancel / Save buttons
+                if spot.id == nil && showingAsSheet { // New spot, so show Cancel/Save buttons
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            dismiss()
                         }
-                        dismiss()
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Save") {
+                            Task {
+                                let success = await spotVM.saveSpot(spot: spot)
+                                if success {
+                                    dismiss()
+                                } else {
+                                    print("😡 DANG! Error saving spot!")
+                                }
+                            }
+                            dismiss()
+                        }
+                    }
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        Spacer()
+                        
+                        Button {
+                            showPlaceLookupSheet.toggle()
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                            Text("Lookup Place")
+                        }
+                    }
+                } else if showingAsSheet && spot.id != nil {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Done") {
+                            dismiss()
+                        }
                     }
                 }
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    
-                    Button {
-                        showPlaceLookupSheet.toggle()
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                        Text("Lookup Place")
-                    }
-                }
-                
             }
         }
         .sheet(isPresented: $showPlaceLookupSheet) {
@@ -159,6 +169,8 @@ struct SpotDetailView: View {
                     let success = await spotVM.saveSpot(spot: spot)
                     spot = spotVM.spot
                     if success {
+                        // If we didn't update the path after saving spot, we wouldn't be able to show new reviews added
+                        $reviews.path = "spots/\(spot.id ?? "")/reviews"
                         showReviewViewSheet.toggle()
                     } else {
                         print("😡 Dang! Error saving spot!")
