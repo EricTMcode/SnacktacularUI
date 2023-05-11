@@ -13,6 +13,7 @@ struct ReviewView: View {
     @State var spot: Spot
     @State var review: Review
     @State var posterByThisUser = false
+    @State var rateOrReviewerString = "Click to Rate:"
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -30,10 +31,12 @@ struct ReviewView: View {
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text("Click to Rate:")
-                .font(.title2)
-                .bold()
-            
+            Text(rateOrReviewerString)
+                .font(posterByThisUser ? .title2 : .subheadline)
+                .bold(posterByThisUser)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+                .padding(.horizontal)
             HStack {
                 StarSelectionView(rating: $review.rating)
                     .disabled(!posterByThisUser)
@@ -75,22 +78,27 @@ struct ReviewView: View {
         .onAppear {
             if review.reviewer == Auth.auth().currentUser?.email {
                 posterByThisUser = true
+            } else {
+                rateOrReviewerString = "by: \(review.reviewer)"
             }
         }
+        .navigationBarBackButtonHidden(posterByThisUser) // Hide back button if posted by this user
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancel") {
-                    dismiss()
+            if posterByThisUser {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
                 }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Save") {
-                    Task {
-                        let success = await reviewVM.saveReview(spot: spot, review: review)
-                        if success {
-                            dismiss()
-                        } else {
-                            print("😡 ERROR saving data in ReviewView")
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        Task {
+                            let success = await reviewVM.saveReview(spot: spot, review: review)
+                            if success {
+                                dismiss()
+                            } else {
+                                print("😡 ERROR saving data in ReviewView")
+                            }
                         }
                     }
                 }
