@@ -79,7 +79,8 @@ struct ReviewView: View {
             if review.reviewer == Auth.auth().currentUser?.email {
                 posterByThisUser = true
             } else {
-                rateOrReviewerString = "by: \(review.reviewer)"
+                let reviewPostedOn = review.postedOn.formatted(date: .numeric, time: .omitted)
+                rateOrReviewerString = "by: \(review.reviewer) on: \(reviewPostedOn)"
             }
         }
         .navigationBarBackButtonHidden(posterByThisUser) // Hide back button if posted by this user
