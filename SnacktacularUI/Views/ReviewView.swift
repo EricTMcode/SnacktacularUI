@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ReviewView: View {
+    @StateObject var reviewVM = ReviewViewModel()
     @State var spot: Spot
     @State var review: Review
-    @StateObject var reviewVM = ReviewViewModel()
+    @State var posterByThisUser = false
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -34,9 +36,10 @@ struct ReviewView: View {
             
             HStack {
                 StarSelectionView(rating: $review.rating)
+                    .disabled(!posterByThisUser)
                     .overlay {
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(.gray.opacity(0.5), lineWidth: 2)
+                            .stroke(.gray.opacity(0.5), lineWidth: posterByThisUser ? 2 : 0)
                     }
             }
             .padding(.bottom)
@@ -46,27 +49,33 @@ struct ReviewView: View {
                     .bold()
                 
                 TextField("title", text: $review.title)
-                    .textFieldStyle(.roundedBorder)
+                    .padding(.horizontal, 6)
                     .overlay {
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(.gray.opacity(0.5), lineWidth: 2)
+                            .stroke(.gray.opacity(0.5), lineWidth: posterByThisUser ? 2 : 0.3)
                     }
                 
                 Text("Review")
                     .bold()
-                    
+                
                 TextField("review", text: $review.body, axis: .vertical)
                     .padding(.horizontal, 6)
                     .frame(maxHeight: .infinity, alignment: .topLeading)
                     .overlay {
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(.gray.opacity(0.5), lineWidth: 2)
+                            .stroke(.gray.opacity(0.5), lineWidth: posterByThisUser ? 2 : 0.3)
                     }
             }
+            .disabled(!posterByThisUser)
             .padding(.horizontal)
             .font(.title2)
             
             Spacer()
+        }
+        .onAppear {
+            if review.reviewer == Auth.auth().currentUser?.email {
+                posterByThisUser = true
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -77,7 +86,7 @@ struct ReviewView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
                     Task {
-                      let success = await reviewVM.saveReview(spot: spot, review: review)
+                        let success = await reviewVM.saveReview(spot: spot, review: review)
                         if success {
                             dismiss()
                         } else {
