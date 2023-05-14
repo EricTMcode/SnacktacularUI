@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		075FD9AE2A0D08AC00C762C3 /* SpotReviewRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FD9AD2A0D08AC00C762C3 /* SpotReviewRowView.swift */; };
+		0762BC692A1109930014A53B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762BC682A1109930014A53B /* Photo.swift */; };
 		07D605012A053237005982B0 /* SnacktacularUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605002A053237005982B0 /* SnacktacularUIApp.swift */; };
 		07D605032A053237005982B0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605022A053237005982B0 /* LoginView.swift */; };
 		07D605052A053238005982B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D605042A053238005982B0 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		075FD9AD2A0D08AC00C762C3 /* SpotReviewRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotReviewRowView.swift; sourceTree = "<group>"; };
+		0762BC682A1109930014A53B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		07D604FD2A053237005982B0 /* SnacktacularUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnacktacularUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D605002A053237005982B0 /* SnacktacularUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacktacularUIApp.swift; sourceTree = "<group>"; };
 		07D605022A053237005982B0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				07D605202A05926D005982B0 /* Spot.swift */,
 				07D605542A068CBB005982B0 /* Place.swift */,
 				07D6055C2A092AD4005982B0 /* Review.swift */,
+				0762BC682A1109930014A53B /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0762BC692A1109930014A53B /* Photo.swift in Sources */,
 				07D605232A059357005982B0 /* SpotDetailView.swift in Sources */,
 				07D6055A2A068CBB005982B0 /* PlaceViewModel.swift in Sources */,
 				07D605632A093682005982B0 /* ReviewViewModel.swift in Sources */,

@@ -86,7 +86,19 @@ struct SpotDetailView: View {
                         Text("Photo")
                     }
                     .onChange(of: selectedPhoto) { newValue in
-                        <#code#>
+                        Task {
+                            do {
+                                if let data = try await newValue?.loadTransferable(type: Data.self) {
+                                    if let uiImage = UIImage(data: data) {
+                                        // TODO: This is where you'd set your Image = Image(uiImage: uiImage) or call your function to save the image
+                                        print("📸 Successfully selected image!")
+                                    }
+                                }
+                            } catch {
+                                print("😡 ERROR: selecting image failed \(error.localizedDescription)")
+                                
+                            }
+                        }
                     }
                     
                     Button {
