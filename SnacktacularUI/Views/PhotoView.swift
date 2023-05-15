@@ -10,6 +10,7 @@ import SwiftUI
 struct PhotoView: View {
     @EnvironmentObject var spotVM: SpotViewModel
     var uiImage: UIImage
+    var spot: Spot
     @State private var photo = Photo()
     @Environment(\.dismiss) private var dismiss
     
@@ -40,9 +41,11 @@ struct PhotoView: View {
                 ToolbarItem(placement: .automatic) {
                     Button("Save") {
                         Task {
-                            
+                            let success = await spotVM.saveImage(spot: spot, photo: photo, image: uiImage)
+                            if success {
+                                dismiss()
+                            }
                         }
-                        dismiss()
                     }
                 }
             }
@@ -53,7 +56,7 @@ struct PhotoView: View {
 struct PhotoView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            PhotoView(uiImage: UIImage(named: "pizza") ?? UIImage())
+            PhotoView(uiImage: UIImage(named: "pizza") ?? UIImage(), spot: Spot())
                 .environmentObject(SpotViewModel())
         }
     }
