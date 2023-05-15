@@ -1,5 +1,5 @@
 ## SnacktacularUI
-FullStack Restaurant Review App using GoogleFirebase &amp; CoudFirestore in SwiftUI
+FullStack Restaurant Review App using GoogleFirebase &amp; CloudFirestore in SwiftUI
 
 - Build the app in MVVM
 - Firebase Email & password Signup / Login
