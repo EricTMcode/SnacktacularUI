@@ -10,6 +10,7 @@
 		075FD9AE2A0D08AC00C762C3 /* SpotReviewRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075FD9AD2A0D08AC00C762C3 /* SpotReviewRowView.swift */; };
 		0762BC692A1109930014A53B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762BC682A1109930014A53B /* Photo.swift */; };
 		0762BC6B2A1110120014A53B /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762BC6A2A1110120014A53B /* PhotoView.swift */; };
+		0762BC6D2A1255420014A53B /* SpotDetailPhotoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762BC6C2A1255420014A53B /* SpotDetailPhotoScrollView.swift */; };
 		07D605012A053237005982B0 /* SnacktacularUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605002A053237005982B0 /* SnacktacularUIApp.swift */; };
 		07D605032A053237005982B0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D605022A053237005982B0 /* LoginView.swift */; };
 		07D605052A053238005982B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D605042A053238005982B0 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		075FD9AD2A0D08AC00C762C3 /* SpotReviewRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotReviewRowView.swift; sourceTree = "<group>"; };
 		0762BC682A1109930014A53B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0762BC6A2A1110120014A53B /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		0762BC6C2A1255420014A53B /* SpotDetailPhotoScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailPhotoScrollView.swift; sourceTree = "<group>"; };
 		07D604FD2A053237005982B0 /* SnacktacularUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnacktacularUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D605002A053237005982B0 /* SnacktacularUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacktacularUIApp.swift; sourceTree = "<group>"; };
 		07D605022A053237005982B0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				07D605022A053237005982B0 /* LoginView.swift */,
 				07D6051E2A054099005982B0 /* ListView.swift */,
 				07D605222A059357005982B0 /* SpotDetailView.swift */,
+				0762BC6C2A1255420014A53B /* SpotDetailPhotoScrollView.swift */,
 				075FD9AD2A0D08AC00C762C3 /* SpotReviewRowView.swift */,
 				07D605572A068CBB005982B0 /* PlaceLookupView.swift */,
 				07D6055E2A092C0C005982B0 /* ReviewView.swift */,
@@ -254,6 +257,7 @@
 				07D605582A068CBB005982B0 /* Place.swift in Sources */,
 				07D605212A05926D005982B0 /* Spot.swift in Sources */,
 				07D605612A092F93005982B0 /* StarSelectionView.swift in Sources */,
+				0762BC6D2A1255420014A53B /* SpotDetailPhotoScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
