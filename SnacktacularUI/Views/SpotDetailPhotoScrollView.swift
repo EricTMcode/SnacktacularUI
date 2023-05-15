@@ -17,6 +17,7 @@ struct SpotDetailPhotoScrollView: View {
     
     @State private var showPhotoViewerView = false
     @State private var uiImage = UIImage()
+    @State private var selectedPhoto = Photo()
     var photos: [Photo]
     var spot: Spot
     
@@ -34,6 +35,7 @@ struct SpotDetailPhotoScrollView: View {
                             .clipped()
                             .onTapGesture {
                                 let renderer = ImageRenderer(content: image)
+                                selectedPhoto = photo
                                 uiImage = renderer.uiImage ?? UIImage()
                                 showPhotoViewerView.toggle()
                             }
@@ -47,7 +49,7 @@ struct SpotDetailPhotoScrollView: View {
         .frame(height: 80)
         .padding(.horizontal, 4)
         .sheet(isPresented: $showPhotoViewerView) {
-            PhotoView(uiImage: uiImage, spot: spot)
+            PhotoView(photo: $selectedPhoto , uiImage: uiImage, spot: spot)
         }
     }
 }
