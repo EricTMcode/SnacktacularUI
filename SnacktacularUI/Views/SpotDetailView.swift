@@ -25,6 +25,7 @@ struct SpotDetailView: View {
     @EnvironmentObject var spotVM: SpotViewModel
     @EnvironmentObject var locationManager: LocationManager
     @FirestoreQuery(collectionPath: "spots") var reviews: [Review]
+    @FirestoreQuery(collectionPath: "spots") var photos: [Photo]
     @State var spot: Spot
     @State private var showPlaceLookupSheet = false
     @State private var showReviewViewSheet = false
@@ -71,6 +72,8 @@ struct SpotDetailView: View {
                 annotations = [Annotation(name: spot.name, address: spot.address, coordinate: spot.coordinate)]
                 mapRegion.center = spot.coordinate
             }
+            
+            SpotDetailPhotoScrollView(photos: photos, spot: spot)
             
             HStack {
                 Group {
@@ -154,6 +157,9 @@ struct SpotDetailView: View {
             if !previewRunning && spot.id != nil { // This is to prevent PreviewProvider error
                 $reviews.path = "spots/\(spot.id ?? "")/reviews"
                 print("reviews.path = \($reviews.path)")
+                
+                $photos.path = "spots/\(spot.id ?? "")/photos"
+                print("photos.path = \($photos.path)")
             } else {
                 showingAsSheet = true
             }
@@ -232,8 +238,7 @@ struct SpotDetailView: View {
                     if success {
                         // If we didn't update the path after saving spot, we wouldn't be able to show new reviews added
                         $reviews.path = "spots/\(spot.id ?? "")/reviews"
-                        // TODO: Add Photo
-//                        $photos.path = "spots/\(spot.id ?? "")/photos"
+                        $photos.path = "spots/\(spot.id ?? "")/photos"
                         switch buttonPressed {
                         case .review:
                             showReviewViewSheet.toggle()
